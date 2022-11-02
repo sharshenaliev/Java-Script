@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №9</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+        const difficultylevel = parseInt(prompt("Введите уровень сложности:"))
+     
+        //let message 
+        //if (difficultylevel === 4 || difficultylevel === 5)  {
+        //    message = "Профессионал"  
+        //} else if (difficultylevel === 2 || difficultylevel === 3) {
+        //    message = "Опытный игрок"
+        //} else if (difficultylevel === 1) {
+        //    message = "Любитель"
+        //} else if (difficultylevel === 0) {
+        //    message = "Полный чайник"
+        //} else {
+        //    message = "Введен неверный уровень сложности."
+        //}
+
+        let message
+        switch (difficultylevel) {
+            case 0:
+                message = "Полный чайник"
+                break;
+            case 1:
+                message = "Любитель"
+                break;
+            case 2:
+            case 3:
+                message = "Опытный игрок"
+                break;
+            case 4:
+            case 5:
+                message = "Профессионал"
+                break;
+            default:
+                message = "Введен неверный уровень сложности."
+                break;
+        }
+        document.querySelector(`#message`).textContent = message
+    </script>
+</body>
+</html>

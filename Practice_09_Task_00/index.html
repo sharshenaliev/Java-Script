@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Interactive Sandbox</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const canvas = document.getElementById('canvas');
+                const w = canvas.width  = window.innerWidth;
+                const h = canvas.height = window.innerHeight;
+                setup(canvas.getContext('2d'), w, h);
+                document.addEventListener('keydown', e => keyDown(e.key))
+            });
+        </script>
+        <script src="drawingHelpers.js"></script>
+        <script src="turtle.js"></script>
+        <script src="field.js"></script>
+        
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            const fieldWidth = 20;
+            const fieldHeight = 20;
+
+            const field = new Field(fieldWidth, fieldHeight); 
+            const turtle = new Turtle(0, 0, field);
+            const kangaroo = new Kangaroo(fieldWidth - 1, fieldHeight - 1, field);
+            kangaroo.isPenDown = true;
+        
+            const keyMapping = {
+                // Turtle 1 Keys
+                'w': () => { turtle.turnUp();    turtle.move(); },
+                'a': () => { turtle.turnLeft();  turtle.move(); },
+                's': () => { turtle.turnDown();  turtle.move(); },
+                'd': () => { turtle.turnRight(); turtle.move(); },
+                'e': () => { turtle.changePenState(); },
+                // Turtle 2 Keys
+                'i': () => { kangaroo.turnUp();    kangaroo.move(); },
+                'j': () => { kangaroo.turnLeft();  kangaroo.move(); },
+                'k': () => { kangaroo.turnDown();  kangaroo.move(); },
+                'l': () => { kangaroo.turnRight(); kangaroo.move(); },
+                'o': () => { kangaroo.changePenState(); }
+            
+            };
+
+            function setup(ctx, w, h) {
+                initDrawingData(w, h, field);
+
+                window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+            }
+
+            function draw(ctx, w, h, timestamp) {
+                if (w != window.innerWidth || h != window.innerHeight) {
+                    w = canvas.width  = window.innerWidth;
+                    h = canvas.height = window.innerHeight;
+                }
+                
+                clearScreen(ctx, w, h);
+                field.draw(ctx)
+                turtle.draw(ctx);
+                kangaroo.draw(ctx);
+
+                window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+            }
+
+            function keyDown(key) {
+                const action = keyMapping[key.toLowerCase()]
+                if (action) { 
+                    action() 
+                }
+            }
+        </script>
+    </body>
+</html>

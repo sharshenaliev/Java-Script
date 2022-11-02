@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Animation Sandbox</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const canvas = document.getElementById('canvas');
+                const w = canvas.width  = window.innerWidth;
+                const h = canvas.height = window.innerHeight;
+                setup(canvas.getContext('2d'), w, h);
+            });
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            const count = 100;
+            const radius = 10;
+            const minSpeed = -3;
+            const maxSpeed = 3; 
+            const x = Array(count); 
+            const y = Array(count);
+            const dx = Array(count); 
+            const dy = Array(count);
+            
+            function setup(ctx, w, h) {
+                for (let i = 0; i < count; i++) {
+                    x[i] = radius + Math.random() * (w - radius);
+                    y[i] = radius + Math.random() * (h - radius);
+                    dx[i] = minSpeed + Math.random() * (maxSpeed - minSpeed);
+                    dy[i] = minSpeed + Math.random() * (maxSpeed - minSpeed);
+                }
+                
+                window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+            }
+            function draw(ctx, w, h, timestamp) {
+                if (w != window.innerWidth || h != window.innerHeight) {
+                    w = canvas.width  = window.innerWidth;
+                    h = canvas.height = window.innerHeight;
+                }
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.rect(0, 0, w, h);
+                ctx.fill();
+
+                for (let i = 0; i < count; i++) {
+                    const red   = Math.trunc(Math.random() * 256);
+                    const green = Math.trunc(Math.random() * 256);
+                    const blue  = Math.trunc(Math.random() * 256);
+
+                    ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`;
+                    ctx.beginPath();
+                    ctx.arc(x[i], y[i], radius, 0, 2 * Math.PI);
+                    ctx.fill();
+                
+                    x[i] += dx[i]; y[i] += dy[i];
+                    if (x[i] + radius > w || x[i] - radius < 0) { dx[i] = -dx[i]; } 
+                    if (y[i] + radius > h || y[i] - radius < 0) { dy[i] = -dy[i]; }
+                }
+
+                window.requestAnimationFrame(timestamp => draw(ctx, w, h, timestamp));
+            }
+        </script>
+    </body>
+</html>

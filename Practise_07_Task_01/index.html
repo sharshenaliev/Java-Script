@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №1</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+    const throwCount = parseInt(prompt("Сколько раз нужно бросить игральные кости?"))
+    
+    const outcomes = Array(13).fill(0)
+    for (let i = 0; i < throwCount; i++) {
+        const die1 = Math.trunc(1 + Math.random() * 6)
+        const die2 = Math.trunc(1 + Math.random() * 6)
+        const sum = die1 + die2
+        outcomes[sum]++
+    }
+
+    let message = ""
+    for(let i = 2; i < outcomes.length; i++) {
+        message += `${i}: ${outcomes[i]}<br>`
+    }
+
+    document.getElementById("message").innerHTML = message 
+    </script>
+</body>
+</html>

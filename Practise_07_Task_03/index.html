@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №3</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+        const count = parseInt(prompt("Введите количество элементов массива..."))
+        const numbers = Array(count)
+        for(let i = 0; i < count; i++) {
+            let number = parseInt(prompt(`Введите элемент ${i}:`))
+            numbers[i] = number
+        }
+        
+        if (numbers.length > 0) {
+            let max = numbers[0] 
+            let min = numbers[0]
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] > max) {
+                    max = numbers[i] 
+                }
+                if (numbers[i] < min) {
+                    min = numbers[i] 
+               } 
+            } 
+        // const min = Math.min(...numbers)
+        // const max = Math.max(...numbers)
+        
+            document.getElementById("message").innerHTML = 
+            `Минимальное значение: ${min}<br>` +  
+            `Максимальное значение: ${max}`
+        
+        }
+    </script>
+</body>
+</html>

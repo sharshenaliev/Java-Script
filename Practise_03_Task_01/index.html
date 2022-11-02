@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Алмаз">
+    <meta name="description" content="Страница документации о языке Marcdown">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+    <meta name="keyword" content="документции, Marcdown">
+    <title>Marcdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <nav>
+                <a href="#headings">Заголовки</a>
+                <a href="#lists">Списки</a>
+                <a href="#links">Ссылки</a>
+                <a href="#text-types">Текст</a>
+                <a href="#quotes">Цитаты</a>
+                <a href="#images">Изображения</a>
+                <a href="#tables">Таблицы</a>
+           </nav>
+        </header>
+        <article>
+            <h1>Язык разметки Marcdown</h1>
+            <section id="general" class="overview">
+            <h2>Общие правила</h2>
+            <p>Язык <em>Marcdown</em> позволяет описать структуру текстового документа без 
+            использования <strong>трудночитаемых</strong> языков разметки вроде HTML</p>
+            <p>Пример</p>
+            <pre><code><strong>&lt;strong&gt;Важный текст&lt;strong&gt;</strong></code></pre>
+            </section>
+            <hr>
+            <section id="headings" class="specifics">
+            <h2>Заголовки</h2>
+            <p>Для указания заголовка определенного уровня в Marcdown нужно перед
+            текстом заголовка поставить набор знаков <code>#</code>.</p>
+            <p>Вы можете использовать HTML тэги внутри языка Marcdown.</p>
+            <p>Пример:</p>
+            <pre><code>## Заголовок второго уровня
+###### Заголовок шестого уровня</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <h2>Заголовок второго уровня</h2>
+            <h6>Заголовок шестого уровня</h6>
+            </section>
+            <hr>
+            <section id="lists" class="specifics">
+            <h2>Списки</h2>
+            <p>Для создания списка перед каждым элементом списка нужно поставить 
+            символ <code>*</code></p>
+            <p>Пример:</p>
+            <pre><code>* первый элемент списка 
+* второй элемент списка
+* третий элемент списка</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <ul>
+                <li>первый элемент списка</li>
+                <li>второй элемент списка</li>
+                <li>третий элемент списка</li>
+            </ul>
+            <p>Для создания нумерованного списка перед каждым элементом списка 
+            нужно поставить число.</p>
+            <pre><code>1. первый элемент списка
+2. второй элемент списка
+3. третий элемент списка</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <ol>
+                <li>первый элемент списка</li>
+                <li>второй элемент списка</li>
+                <li>третий элемент списка</li>
+            </ol>
+            <p>Для создания списка определений после определяемого слова нужно поставить
+            символ <code>:</code> </p>
+            <p>Пример:</p>
+            <pre><code>kramdown
+: Альернативный вариант языка Marcdown
+
+Maruku
+:     Другой конвертор языка Marcdown</code></pre>
+            <p>При конвертированиив в HTML получим следующее:</p>
+            <dl>
+                <dt>kramdown</dt>
+                <dd>Альтернативный вариант языка Marcdown</dd>
+                <dt>Maruku</dt>
+                <dd>Другой конвертор языка Marcdown</dd>
+            </dl>
+            </section>
+            <hr>
+            <section id="links" class="specifics">
+            <h2>Ссылки</h2>
+            <p>Для создания ссылок нужно использовать следующий синтаксис:</p>
+            <pre><code>[текст ссылки](https://google.com)</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <a href="https://google.com">текст ссылки</a>
+            </section>
+            <hr>
+            <section id="text-types" class="specifics">
+            <h2>Сильная значимость и акцентирование</h2>
+            <p>Для указания важного текста в документе нужно использовать два 
+            символа <code>**</code> или <code>__</code></p>
+            <pre><code>**важный текст**
+__важный текст__</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <strong>важный текст</strong>
+            <strong>важный текст</strong>
+            <p>Для указания важного акуента на слово или фразу нужно использовать один 
+            символа <code>*</code> или <code>_</code></p>
+            <pre><code>*акцентирование*
+_акцентирование_</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <em>акцентирование</em>
+            <em>акцентирование</em>
+            </section>
+            <hr>
+            <section id="quotes" class="specifics">
+            <h2>Цитаты</h2>
+            <p>Для цитирования, перед каждой строкой цитаты нужно поставить знак ></p>
+            <pre><code>></code></pre>
+            <p>Пример:</p>
+            <pre><code>>Words can be like X-rays, if you use them properly—
+they’ll go through anything. You read and you’re pierced.</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <blockquote>Words can be like X-rays, if you use them properly—
+they’ll go through anything. You read and you’re pierced.</blockquote>
+            </section>
+            <hr>
+            <section id="images" class="specifics">
+            <h2>Изображение</h2>
+            <p>Для создания ссылок в языке Marcdown нужно использовать следующий
+            синтаксис:</p>
+            <p>Пример:</p>
+            <pre><code>!альтернативный текст](/1280px-Markdown-mark.svg.png)</code></pre>
+            <p>При конвертировании в HTML получим следующее:</p>
+            <img src="1280px-Markdown-mark.svg.png" alt="Логотип языка Marcdown" width="200" >
+            </section>
+            <hr>
+            <section id="tables" class="specifics">
+            <h2>Таблица</h2>
+            <p>Для создания таблиц нужно использовать знак<code>|</code> 
+            для обозначения колонок</p>
+            <pre><code>| First cell | Second cell | Third cell | 
+|------------|------------|-----------|
+| First      | Second     | Third     |
+| First      | Second     | Third     |</code></pre>
+            <table>
+                <tr>
+                    <th colspan="2">First</th>
+                    <td>Third</td>
+                </tr>
+                <tr>
+                    <th rowspan="2">First</th>
+                    <td>Second</td>
+                    <td>Third</td>
+                </tr>
+                <tr>
+                    <td>Second</td>
+                    <td>Third</td>
+                </tr>
+            </table>
+            </section>
+        </article>
+        <footer>&copy; 2019</footer>
+    </main>
+</body>
+</html>

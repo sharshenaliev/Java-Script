@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №5</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script> src ="/math.js" </script>
+    <script>
+    const testType = prompt("Введите тип теста (+.-):") 
+    const testCount = parseInt(prompt("Введите количество тестов: ")) 
+
+    const minimum = 0, maximum = 10
+    let correctAnswerCount = 0 
+    let incorrectAnswerCount = 0
+
+    const generateTestForSum = (num1, num2) =>  {
+        const answer = parseInt(prompt(num1 + "+" + num2 + "=" + "?"))
+        if (num1 + num2 === answer) { 
+            correctAnswerCount++
+        } else {
+            incorrectAnswerCount++
+        }
+    } 
+    const generateTestForDiff = (num1, num2) => {
+        const answer = parseInt(prompt(num1 + "-" + num2 + "=" + "?"))
+        if (num1 - num2 === answer) { 
+            correctAnswerCount++
+        } else {
+            incorrectAnswerCount++
+        }
+    }
+    const selectedTestGenerator = testType === "+" ? generateTestForSum : generateTestForDiff
+
+    for(let i = 0; i < testCount; i++) {
+        const num1 = random(minimum, maximum)
+        const num2 = random(minimum, maximum)
+        selectedTestGenerator()
+    } 
+    
+    document.getElementById("message").innerHTML = 
+    `Количество правильных ответов: ${correctAnswerCount}<br>` +
+    `Количество неправильных ответов: ${incorrectAnswerCount}`
+    </script>
+</body>
+</html>

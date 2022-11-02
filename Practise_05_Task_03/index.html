@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №3</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+        const number1 = parseInt(prompt("Введите первое число:"))
+        const number2 = parseInt(prompt("Введите второе число:"))
+
+        let message;
+        if (number1 > number2) {
+            message = `Первое число ${number1} больше второго числа ${number2}.`
+        } else if (number1 < number2) {
+            message = `Второе число ${number2} больше или равно первого числа ${number1}.`
+        } else {
+            message = "Числа равны"
+        }
+        document.querySelector(`#message`).textContent = message 
+    </script>
+</body>
+</html>

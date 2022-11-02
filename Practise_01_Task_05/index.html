@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Задание #5</title>
+    </head>
+    <body>
+        <p id="result"></p>
+        <script>
+            const number1 = parseInt(prompt("Введите первое число:"))
+            const number2 = parseInt(prompt("Введите второе число:"))
+            
+            const sum = number1 + number2
+            const diff = number1 - number2
+            const mul = number1 * number2
+            const quot = Math.trunc(number1 / number2)
+            const rem = number1 % number2
+            const sqr = number1 ** number2
+            
+            //document.getElementById("result").innerHTML = number1 + " + " + number2 + " = " + sum + "<br>" + 
+            //number1 + " - " + number2 + " = " + diff + "<br>" + 
+            //number1 + " * " + number2 + " = " + mul + "<br>" + 
+            //number1 + " / " + number2 + " = " + div + "<br>" + 
+            //number1 + " % " + number2 + " = " + rem + "<br>" + 
+            //number1 + " ** " + number2 + " = " + sqr + "<br>"
+            
+            document.getElementById("result").innerHTML = 
+            `${number1} + ${number2} = ${sum}<br>`  + 
+            `${number1} - ${number2} = ${diff}<br>` +
+            `${number1} * ${number2} = ${mul}<br>`  +
+            `${number1} / ${number2} = ${quot}<br>` +
+            `${number1} % ${number2} = ${rem}<br>`  +
+            `${number1} ** ${number2} = ${sqr}<br>`
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Задание #1</title>
+    </head>
+    <body>
+        <p id="result1"></p>
+        <p id="result2"></p>
+        <script>
+            let a = parseInt(prompt("Первое значение?"))
+            let b = parseInt(prompt("Второе значение?"))
+    
+            document.getElementById("result1").textContent =
+                `До перестановки: a = ${a}; b = ${b};`
+
+            const t = a   
+            a = b
+            b = t
+
+            document.getElementById("result2").textContent =
+                `После перестановки: a = ${a}; b = ${b};`
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №4</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+        const number1 = parseInt(prompt("Введите первое число:"))
+        const number2 = parseInt(prompt("Введите второе число:"))
+        const number3 = parseInt(prompt("Введите третье число:"))
+        
+        let max = number1
+        if (number2 > max) {
+            max = number2
+        }  
+        if (number3 > max) {
+            max = number3
+        } 
+        document.querySelector(`#message`).textContent = `Значение ${max} является максимальным.` 
+    </script>
+</body>
+</html>

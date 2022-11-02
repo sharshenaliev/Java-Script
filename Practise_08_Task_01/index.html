@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Задание №1</title>
+        </head>
+        <body>
+            <p id="message"></p>
+            <script src="utilities.js"></script>
+            <script>
+                const coordinate = parseInt(prompt("Введите исходную координату"))
+                const point1 = parseInt(prompt("Введите первую точку"))
+                const point2 = parseInt(prompt("Введите вторую точку"))
+
+                const distance1 = abs(coordinate - point1)
+                const distance2 = abs(coordinate - point2)
+
+                let message
+                if (distance1 < distance2) {
+                    message = `Первая точка ближе второй. Дистанция равна ${distance1}`
+                } else if (distance2 < distance1) {
+                    message = `Вторая точка ближе первой. Дистанция равна ${distance2}`
+                } else {
+                    message = `Обе точки равноудалены. Дистанция равна ${distance1}`
+                }
+                
+                document.getElementById("message").textContent = message
+            </script>
+    </body>
+</html>

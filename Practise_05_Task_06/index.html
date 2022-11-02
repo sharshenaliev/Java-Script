@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №6</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+        const grade = parseInt(prompt("Введите количество баллов:"))
+     
+        let message 
+        if (grade >= 90 && grade <= 100 ) {
+            message = "Оценка: A"  
+        } else if (grade >= 80 && grade < 90) {
+            message = "Оценка: B"
+        } else if (grade >= 70 && grade < 80) {
+            message = "Оценка: C"
+        } else if (grade >= 60 && grade < 70) {
+            message = "Оценка: D"
+        } else if (grade < 60)  {
+            message = "Оценка: F"
+        } else {
+            message = `Значение ${grade} является некоректным`
+        }
+        document.querySelector(`#message`).textContent = message
+    </script>
+</body>
+</html>

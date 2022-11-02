@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №1</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+    let sum = 0
+    let i = 0 
+    let number
+    do {
+        number = parseInt(prompt("Введите число: "))
+        sum += number
+        i++
+    } while(number !== 0 )
+    i--
+
+    document.querySelector(`#message`).textContent = 
+        i === 0 ?
+            "Нет данных для расчета" :
+            `Среднее арифметическое ${(sum / i).toFixed(1)}` 
+    </script>
+</body>
+</html>

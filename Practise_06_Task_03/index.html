@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №3</title>
+</head>
+<body>
+    <p id="message"></p>
+    <script>
+    const testCount = parseInt(prompt("Введите количество тестов: ")) 
+    let correctAnswerCount = 0 
+    let incorrectAnswerCount = 0
+    
+    for(let i = 0; i < testCount; i++) {
+        const num1 = Math.trunc(Math.random() * (10 - 1 + 1 )) 
+        const num2 = Math.trunc(Math.random() * (10 - 1 + 1 ))
+        const question = num1 + num2
+        const answer = parseInt(prompt(num1 + "+" + num2 + "=" + "?"))
+        if (answer === question) { 
+            correctAnswerCount++
+        } else {
+            incorrectAnswerCount++
+        }
+    } 
+    
+    document.getElementById("message").innerHTML = 
+    `Количество правильных ответов: ${correctAnswerCount}<br>` +
+    `Количество неправильных ответов: ${incorrectAnswerCount}`
+    </script>
+</body>
+</html>

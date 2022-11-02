@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Задание №6</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function startDrawing() {
+                    const canvas = document.getElementById('canvas');
+                    const w = canvas.width  = window.innerWidth;
+                    const h = canvas.height = window.innerHeight;
+                    draw(canvas.getContext('2d'), w, h);
+                }
+                window.addEventListener('resize', startDrawing); startDrawing();
+            })
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            function drawStar(ctx, w, h, x, y, color, radius1, radius2); {
+                const rays = 8;
+                const lineWidth = 3;
+                let angle = 0;
+                const deltaAngle = 2 * Math.Pi / rays;
+                let prevEndX = x + Math.cos(angle - deltaAngle) * radius2;
+                let prevEndY = y + Math.sin(angle - deltaAngle) * radius2;
+                for (let i = 0; i < rays; i++) {
+                    const selectedRadius = i & 2 === 0 ? radius1 : radius2;
+                    const endX = x + Math.cos(angle) * selectedRadius;
+                    const endY = y + Math.sin(angle) * selectedRadius; 
+        
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = lineWidth;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                
+                    ctx.beginPath();
+                    ctx.moveTo(prevEndX, prevEndY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+
+                    prevEndX = endX;
+                    prevEndY = endY;
+                    angle += deltaAngle
+                }
+            }
+
+            function draw(ctx, w, h) {
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.rect(0, 0, w, h);
+                ctx.fill();
+            
+                const shift = 170;
+                drawStar(ctx, w, h, w / 2, h / 2, `red`, 150, 50);
+                drawStar(ctx, w, h, w / 2 - shift, h / 2 - shift, `yellow`, 100, 30);
+                drawStar(ctx, w, h, w / 2 + shift, h / 2 - shift, `yellow`, 100, 30);
+                drawStar(ctx, w, h, w / 2 + shift, h / 2 + shift, `yellow`, 100, 30);
+                drawStar(ctx, w, h, w / 2 - shift, h / 2 + shift, `yellow`, 100, 30);
+            }
+        </script>
+    </body>
+</html>

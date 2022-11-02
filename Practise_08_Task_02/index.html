@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Задание №2</title>
+        </head>
+        <body>
+            <p id="message"></p>
+            <script src="utilities.js"></script>
+            <script>
+                const input = prompt("Введите три числа...")
+                const parts = input.split(" ")
+                const num1 = parseInt(parts[0])
+                const num2 = parseInt(parts[1])
+                const num3 = parseInt(parts[2])
+
+                const result = max(parts)
+                
+                document.getElementById("message").textContent = 
+                    `Максимальное значение: ${result}` 
+            </script>
+    </body>
+</html>

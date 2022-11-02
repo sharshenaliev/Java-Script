@@ -1,0 +1,23 @@
+﻿<!doctype html>
+<html> 
+  <head>
+     <title>Greeting</title>
+     <style>
+       #message {
+	font-size: 2em
+       }
+     </style>
+  </head>
+  <body>
+    <p id ="message">Привет, Мир!</p>	
+    <script>
+      setInterval(() => {
+	const message = document.getElementById("message");
+	const red   = Math.floor(Math.random() * 256) 
+	const green = Math.floor(Math.random() * 256) 
+	const blue  = Math.floor(Math.random() * 256) 
+	message.style.color = `rgb(${red}, ${green}, ${blue})` 
+      }, 1000)
+  </script>  
+  </body>
+</html>

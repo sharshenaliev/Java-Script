@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Задание №5</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function startDrawing() {
+                    const canvas = document.getElementById('canvas');
+                    const w = canvas.width  = window.innerWidth;
+                    const h = canvas.height = window.innerHeight;
+                    draw(canvas.getContext('2d'), w, h);
+                }
+                window.addEventListener('resize', startDrawing); startDrawing();
+            })
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            const circleCount = 20
+            
+            function draw(ctx, w, h) {
+                ctx.fillStyle = 'black';
+                ctx.beginPath();
+                ctx.rect(0, 0, w, h);
+                ctx.fill();
+                
+                let red = 0;
+                const redStep = 255 / circleCount
+                let radius = Math.min(w, h) / 2;
+                const radiusStep = radius / circleCount 
+                
+                for (let i = 0; i < circleCount; i++) {
+                ctx.fillStyle = `rgb(${red}, 0, 0)`;
+                ctx.beginPath();
+                ctx.arc(w / 2, h / 2, radius, 0, 2 * Math.PI );
+                ctx.fill();
+                
+                red += redStep
+                radius -= radiusStep 
+                }
+            }
+        </script>
+    </body>
+</html>

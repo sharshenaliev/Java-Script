@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание №4</title>
+</head>
+<body>
+    <p id="before"></p>
+    <p id="after"></p>
+    <script>
+        const count = parseInt(prompt("Введите количество элементов массива..."))
+        const numbers = Array(count)
+        const temps = Array(count)
+                
+        for(let i = 0; i < count; i++) {
+            let number = parseInt(prompt(`Введите элемент ${i}:`))
+            numbers[i] = number
+        }  
+        for(let i = numbers.length - 1, j = 0; i >= 0; i--, j++) {
+            temps[j] = numbers[i]
+        }
+        let before = "До: " 
+        let after = "После: " 
+        for(let i = 0; i < count; i++) {
+          before += numbers[i]
+          after += temps[i] 
+            if (i !== numbers.length - 1) {
+                before += " "
+                after += " "
+            }
+        }
+      
+        document.getElementById("before").innerHTML = before
+        document.getElementById("after").innerHTML = after
+    </script>
+</body>
+</html>
